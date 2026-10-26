@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "author": "Md. Azharul Islam",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic", "top": -65.7, "left": 197.5, "attrs": {} },
+    { "type": "wokwi-servo", "id": "servo", "top": 150, "left": 180, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led_red",
+      "top": 100,
+      "left": -100,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_green",
+      "top": 150,
+      "left": -100,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_yellow",
+      "top": 200,
+      "left": -100,
+      "attrs": { "color": "yellow" }
+    },
+    { "type": "wokwi-resistor", "id": "r1", "top": 140, "left": -50, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": 190, "left": -50, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r3", "top": 240, "left": -50, "attrs": { "value": "220" } },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": -176,
+      "left": -119.2,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:5V", "ultrasonic:VCC", "red", [ "v0" ] ],
+    [ "esp:GND.1", "ultrasonic:GND", "black", [ "v0" ] ],
+    [ "esp:5", "ultrasonic:TRIG", "green", [ "v0" ] ],
+    [ "esp:18", "ultrasonic:ECHO", "blue", [ "v0" ] ],
+    [ "esp:5V", "servo:V+", "red", [ "v0" ] ],
+    [ "esp:GND.1", "servo:GND", "black", [ "v0" ] ],
+    [ "esp:19", "servo:PWM", "orange", [ "v0" ] ],
+    [ "led_red:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "led_green:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "led_yellow:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "led_red:A", "r1:1", "gray", [ "v0" ] ],
+    [ "r1:2", "esp:27", "cyan", [ "v0" ] ],
+    [ "led_green:A", "r2:1", "gray", [ "v0" ] ],
+    [ "r2:2", "esp:25", "cyan", [ "v0" ] ],
+    [ "led_yellow:A", "r3:1", "gray", [ "v0" ] ],
+    [ "r3:2", "esp:26", "cyan", [ "v0" ] ],
+    [ "lcd:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "lcd:VCC", "esp:5V", "red", [ "v0" ] ],
+    [ "lcd:SDA", "esp:21", "purple", [ "v0" ] ],
+    [ "lcd:SCL", "esp:22", "yellow", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
